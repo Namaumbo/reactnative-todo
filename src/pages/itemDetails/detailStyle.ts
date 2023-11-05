@@ -2,15 +2,27 @@ import { StyleSheet } from "react-native";
 
 const detailsStyles = StyleSheet.create({
     main:{
-        backgroundColor:'skyblue',
-        borderColor:'skyblue',
-        borderWidth:.5,
+        backgroundColor:'white',
+        borderRightColor:'skyblue',
+        borderRightWidth:3,
         padding:10,
         borderRadius:4,
         marginTop:10,
         margin:5,
         height:'auto',
         paddingLeft:8,
+    },
+    main2:{
+        backgroundColor:'white',
+        borderRightColor:'#FF9209',
+        borderRightWidth:3,
+        padding:10,
+        borderRadius:4,
+        marginTop:10,
+        margin:5,
+        height:'auto',
+        paddingLeft:8,
+
     },
     title: {
         fontWeight:'bold',
@@ -39,7 +51,7 @@ const detailsStyles = StyleSheet.create({
     btn:{
         backgroundColor:'green',
         padding:10,
-        width:100,
+        width:110,
         borderWidth:.5,
         borderColor:'green',
         borderRadius:4,

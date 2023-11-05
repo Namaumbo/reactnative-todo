@@ -2,8 +2,10 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
 
     incomplete: {
-        elevation:  .5,
+        elevation: 1,
         backgroundColor:'white',
+        borderRightColor:'#87C4FF',
+        borderRightWidth:2,
         padding: 10,
         borderRadius: 5,
         width: 330,
@@ -37,6 +39,12 @@ export const styles = StyleSheet.create({
         fontSize: 25,
         color: 'green',
         marginRight: 10
+    },
+    incompleteBtn: {
+        fontSize: 25,
+        color: '#2192FF',
+        marginRight: 10
+
     },
     deleteBtn: {
         fontSize: 25,
