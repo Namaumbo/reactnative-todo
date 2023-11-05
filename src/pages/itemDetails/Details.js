@@ -17,7 +17,7 @@ export default function Details({ route }) {
       <View style={detailsStyles.btns}>
         {item.completed ? (
           <TouchableOpacity style={detailsStyles.btn}>
-            <Text style={detailsStyles.comp}>Uncomplete</Text>
+            <Text style={detailsStyles.comp}>Incomplete</Text>
           </TouchableOpacity>
         ) : (
           <TouchableOpacity style={detailsStyles.btn}>
