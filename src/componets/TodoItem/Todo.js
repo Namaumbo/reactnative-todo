@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import styles from "./todoStyle";
-import Icon from "react-native-vector-icons/FontAwesome"; // Import the desired icon set (FontAwesome in this example)
+import Icon from "react-native-vector-icons/AntDesign";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default function Todo({ navigation }) {
@@ -68,9 +68,8 @@ export default function Todo({ navigation }) {
       />
       <View>
         <View style={styles.dateContainer}>
-          <Icon name="bell" style={styles.Icon} />
           <TouchableOpacity onPress={showDatePicker} style={styles.pickDate}>
-            <Text style={styles.txt}>Pick Date</Text>
+            <Icon name="calendar" style={styles.Icon}  ></Icon>
           </TouchableOpacity>
           <Text style={styles.datePlaceHolder}> {date && date.toString()}</Text>
         </View>
@@ -81,12 +80,12 @@ export default function Todo({ navigation }) {
           onCancel={hideDatePicker}
         />
         <View style={styles.dateContainer}>
-          <Icon name="bookmark" style={styles.Icon} />
+        
           <TouchableOpacity
             onPress={handleModalVisibilityChange}
             style={styles.Notes}
           >
-            <Text style={styles.txt}>Add Notes</Text>
+            <Icon name="filetext1" style={styles.Icon}  ></Icon>
           </TouchableOpacity>
           <View style={styles.modalContainer}>
             <Modal

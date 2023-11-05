@@ -10,30 +10,57 @@ export default function Home({ navigation }) {
   };
   const arr = [
     {
-      title: "one",
+      title: "To take out the trash ",
+      details : "To take out the trash must be the first thing",
+      completed : false,
     },
     {
-      title: "two",
+      title: "To read books after listening to songs",
+      details : "To read books after listening to songs must be the first thing",
+      completed : false,
+
     },
     {
-      title: "three",
+      title: "To take out the trash ",
+      details : "To take out the trash must be the first thing",
+      completed : true,
+
     },
     {
-      title: "one",
+      title: "To read books after listening to songs",
+      details : "To read books after listening to songs must be the first thing",
+      completed : false,
     },
     {
-      title: "two",
+      title: "To meet with the developers next office",
+      details : "To meet with the developers next office must be the first thing",
+      completed : true
+    }, {
+      title: "To read books after listening to songs",
+      details : "To read books after listening to songs must be the first thing",
+      completed : true
     },
     {
-      title: "three",
+      title: "To meet with the developers next office",
+      details : "To meet with the developers next office must be the first thing",
+      completed : false
+    }, {
+      title: "To read books after listening to songs",
+      details : "To read books after listening to songs must be the first thing",
+      completed : false
     },
-    
+    {
+      title: "To meet with the developers next office",
+      details : "",
+      completed : true
+    },
+
   ];
   return (
     <>
-      <View>
+      <View style={styles.main}>
         <View style={styles.content}> 
-          <Text style={styles.text}> Welcome back, Daeloh 👋 </Text>
+          <Text style={styles.text}> Hi, Daeloh 👋 </Text>
           <Text style={styles.description}> complete remaining tasks</Text>
         </View>
         <View style={styles.btnContainer}>
@@ -62,7 +89,7 @@ export default function Home({ navigation }) {
           {arr.map((x, index) => {
             return (
               <View key={index}>
-                <Item item={x.title} />
+                <Item item={x.title} itemDetails ={x} />
               </View>
             );
           })}

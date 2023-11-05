@@ -51,10 +51,10 @@ const styles = StyleSheet.create({
         fontSize: 15,
     },
     Icon: {
-        color: 'grey',
+        color: 'white',
         fontSize: 25,
-        paddingRight: 15
-    },
+        padding: 2,
+            },
     dateTxt: {
         color: 'white'
     },

@@ -1,23 +1,21 @@
-import React from "react";
+import React,{useState} from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { styles } from "./itemstyle";
 import Icon from "react-native-vector-icons/AntDesign";
 import { useNavigation } from '@react-navigation/native';
 
 
-export default function Item() {
+ export default function Item (props) {
   const navigation = useNavigation(); 
-  // const handleShow = () => {
-  //   navigation.navigate("Details");
-  // };
+  // const completed  = useState();
   return (
     <>
-      <TouchableOpacity style={styles.wrapper} onPress={() => navigation.navigate("Details")}>
-        <Text style={styles.item}>Item 1 on the list</Text>
+    {/* // for now we can send the whole thing object as route params */}
+      <TouchableOpacity style={props.itemDetails.completed ? styles.incomplete : styles.completed} onPress={() => navigation.navigate("Details",{'item':props.itemDetails})}>
+        <Text style={styles.item}>{props.item}</Text>
         <View style={styles.Btns}>
           <TouchableOpacity
             style={styles.complete}
-          
           >
             <Icon name="checkcircle" style={styles.completeBtn}></Icon>
           </TouchableOpacity>

@@ -2,6 +2,9 @@ import { StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
 
+    main:{
+marginTop:-10
+    },
     addBtn: {
         borderWidth: 1,
         borderColor: '#2a6ef9',
@@ -24,14 +27,16 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     content: {
-
+    textAlign:'center'
     },
     headings: {
         fontWeight: 'bold',
+        color: 'white',
     },
     numbers:{
         fontSize:20,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color: 'white',
     },
     btnContainer: {
     flexDirection:'row',
@@ -47,11 +52,14 @@ const styles = StyleSheet.create({
     , text: {
         fontSize: 20,
         marginTop:20,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        textAlign:'center'
     },
     description: {
         color:'grey',
         fontWeight:'bold',
+        textAlign:'center'
+        
     },
     stats :{
         alignItems: 'center',
