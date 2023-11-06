@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
 
     incomplete: {
@@ -12,7 +12,8 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 5
+        marginBottom: 5,
+        
     },
     completed:{
         borderRightColor:'#FF9209',

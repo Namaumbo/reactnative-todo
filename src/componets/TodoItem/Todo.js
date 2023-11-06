@@ -11,11 +11,11 @@ import {
 import styles from "./todoStyle";
 import Icon from "react-native-vector-icons/AntDesign";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-
+import persistent from "../../Persistence/Persistence";
 export default function Todo({ navigation }) {
   const [text, setText] = React.useState("");
   const [notesInput, setNotesInput] = React.useState("");
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [DatePickerVisible, setDatePickerVisibility] = useState(false);
   const [modalVisible, setModalVisibility] = useState(false);
   const [date, setDate] = useState("");
   const [notes, setNotes] = useState(false);
@@ -37,7 +37,22 @@ export default function Todo({ navigation }) {
 
   const handleAdd = (e) => {
     if (text.trim() !== "") {
-      navigation.navigate("Home");
+      const todoItem = {
+        id : Math.floor(Math.random() *999),
+        title : text,
+        notes : '',
+        date_added : date
+      }
+      Alert.alert('','Item added successfully',[
+        {
+          text:'',
+          onPress: () => {
+            navigation.navigate("Home");
+          },
+          
+        },
+      
+      ])
     } else {
       alert("Please enter a task");
     }
@@ -74,7 +89,7 @@ export default function Todo({ navigation }) {
           <Text style={styles.datePlaceHolder}> {date && date.toString()}</Text>
         </View>
         <DateTimePickerModal
-          isVisible={isDatePickerVisible}
+          isVisible={DatePickerVisible}
           mode="Date"
           onConfirm={handleConfirm}
           onCancel={hideDatePicker}

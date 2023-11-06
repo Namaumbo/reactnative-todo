@@ -8,15 +8,15 @@ export class ItemServices {
     // item methods
  deleteItem(params) {
     Alert.alert("Delete item", "comfirm to delete item", [
+         {
+          text: "Cancel",
+          onPress: () => console.log("Can't delete item"),
+        },
         {
           text: "Delete",
           onPress: () => {
             Alert.alert('Successful')
         }
-        },
-         {
-          text: "Cancel",
-          onPress: () => console.log("Can't delete item"),
         },
       ]);  
  }
