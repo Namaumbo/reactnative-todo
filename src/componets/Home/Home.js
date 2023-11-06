@@ -1,61 +1,34 @@
-import React from "react";
-import { Text, View, TouchableOpacity, Alert, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text, View, TouchableOpacity, Alert, ScrollView, Button } from "react-native";
 import styles from "./homeStyle";
 import Icon from "react-native-vector-icons/AntDesign";
 import Item from "../item/Item";
+import { ItemPersistentStore } from "../../Persistence/Persistence";
+import { useIsFocused } from '@react-navigation/native';
 
 export default function Home({ navigation }) {
+  const item = new ItemPersistentStore()
+  const isFocused = useIsFocused(); 
+
   const handleAdd = () => {
     navigation.navigate("Todo");
   };
-  const arr = [
-    {
-      title: "To take out the trash ",
-      details : "To take out the trash must be the first thing",
-      completed : false,
-    },
-    {
-      title: "To read books after listening to songs",
-      details : "To read books after listening to songs must be the first thing",
-      completed : false,
+  const [ arr , setArr] = useState([])
 
-    },
-    {
-      title: "To take out the trash ",
-      details : "To take out the trash must be the first thing",
-      completed : true,
+ 
+  const fetch = () =>{
+    item.getItems().then((data)=>{
+      console.log(data)
+      setArr(data)
+    }).catch((err)=>{console.log(err)});
 
-    },
-    {
-      title: "To read books after listening to songs",
-      details : "To read books after listening to songs must be the first thing",
-      completed : false,
-    },
-    {
-      title: "To meet with the developers next office",
-      details : "To meet with the developers next office must be the first thing",
-      completed : true
-    }, {
-      title: "To read books after listening to songs",
-      details : "To read books after listening to songs must be the first thing",
-      completed : true
-    },
-    {
-      title: "To meet with the developers next office",
-      details : "To meet with the developers next office must be the first thing",
-      completed : false
-    }, {
-      title: "To read books after listening to songs",
-      details : "To read books after listening to songs must be the first thing",
-      completed : false
-    },
-    {
-      title: "To meet with the developers next office",
-      details : "",
-      completed : true
-    },
+  }
+  useEffect(()=>{
+    if (isFocused){
+      fetch()
 
-  ];
+    }
+  },[isFocused])
   return (
     <>
       <View style={styles.main}>
@@ -70,7 +43,7 @@ export default function Home({ navigation }) {
           </View>
           <View style={styles.stats}>
             <Text style={styles.headings}>incomplete</Text>
-            <Text style={styles.numbers}>4</Text>
+            <Text style={styles.numbers}>{arr.length}</Text>
           </View>
           <View style={styles.stats}>
             <Text style={styles.headings}>overdue</Text>

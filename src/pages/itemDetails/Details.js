@@ -11,9 +11,9 @@ export default function Details({ route }) {
   return (
     <View style={item.completed ? detailsStyles.main2 : detailsStyles.main}>
       <Text style={detailsStyles.title}>{item.title}</Text>
-      <Text style={detailsStyles.date}>Wednesday, 03-11-2023</Text>
+      <Text style={detailsStyles.date}>{item.date_added}</Text>
       <Text style={detailsStyles.desc}>Notes</Text>
-      <Text>{item.details}</Text>
+      <Text>{item.notes}</Text>
       <View style={detailsStyles.btns}>
         {item.completed ? (
           <TouchableOpacity style={detailsStyles.btn}>

@@ -11,7 +11,8 @@ import {
 import styles from "./todoStyle";
 import Icon from "react-native-vector-icons/AntDesign";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import persistent from "../../Persistence/Persistence";
+import {ItemPersistentStore} from "../../Persistence/Persistence";
+
 export default function Todo({ navigation }) {
   const [text, setText] = React.useState("");
   const [notesInput, setNotesInput] = React.useState("");
@@ -19,6 +20,8 @@ export default function Todo({ navigation }) {
   const [modalVisible, setModalVisibility] = useState(false);
   const [date, setDate] = useState("");
   const [notes, setNotes] = useState(false);
+
+  const itemPersistentStore = new ItemPersistentStore();
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -40,13 +43,19 @@ export default function Todo({ navigation }) {
       const todoItem = {
         id : Math.floor(Math.random() *999),
         title : text,
-        notes : '',
+        notes : notesInput,
         date_added : date
       }
+      const add = itemPersistentStore.addItem(todoItem);
+      
+      // if (add['status'] === 'success') {
+      //   Alert.alert('we good')
+      // }
       Alert.alert('','Item added successfully',[
         {
           text:'',
           onPress: () => {
+            
             navigation.navigate("Home");
           },
           
