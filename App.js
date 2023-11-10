@@ -6,10 +6,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Details from "./src/pages/itemDetails/Details.js";
 import Item from "./src/componets/item/Item.js";
+import { RecoilRoot } from "recoil";
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+function App() {
   const headerStyle = {
     headerStyle: {
       backgroundColor: "skyblue",
@@ -29,5 +30,13 @@ export default function App() {
         <Stack.Screen name="Item" options={headerStyle} component={Item} />
       </Stack.Navigator>
     </NavigationContainer>
+  );
+}
+
+export default function RecoilApp() {
+  return (
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   );
 }

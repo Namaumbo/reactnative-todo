@@ -11,13 +11,15 @@ import {
 import styles from "./todoStyle";
 import Icon from "react-native-vector-icons/AntDesign";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import {ItemPersistentStore} from "../../Persistence/Persistence";
+import { useNavigation } from "@react-navigation/native";
+import { ItemPersistentStore } from "../../Persistence/Persistence";
 
-export default function Todo({ navigation }) {
+export default function Todo() {
+  const navigation = useNavigation();
   const [text, setText] = React.useState("");
   const [notesInput, setNotesInput] = React.useState("");
-  const [DatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [modalVisible, setModalVisibility] = useState(false);
+  const [DatePickerVisibility, setDatePickerVisibility] = useState(false);
+  const [modalVisibility, setModalVisibility] = useState(false);
   const [date, setDate] = useState("");
   const [notes, setNotes] = useState(false);
 
@@ -41,27 +43,21 @@ export default function Todo({ navigation }) {
   const handleAdd = (e) => {
     if (text.trim() !== "") {
       const todoItem = {
-        id : Math.floor(Math.random() *999),
-        title : text,
-        notes : notesInput,
-        date_added : date
-      }
-      const add = itemPersistentStore.addItem(todoItem);
-      
-      // if (add['status'] === 'success') {
-      //   Alert.alert('we good')
-      // }
-      Alert.alert('','Item added successfully',[
+        id: Math.floor(Math.random() * 999),
+        title: text,
+        notes: notesInput,
+        date_added: date,
+        completed: false,
+      };
+       itemPersistentStore.addItem(todoItem);
+      Alert.alert("", "Item added successfully", [
         {
-          text:'',
+          text: "",
           onPress: () => {
-            
             navigation.navigate("Home");
           },
-          
         },
-      
-      ])
+      ]);
     } else {
       alert("Please enter a task");
     }
@@ -78,7 +74,7 @@ export default function Todo({ navigation }) {
     if (notesInput.trim().length > 0) {
       setNotes(true);
     }
-    setModalVisibility(!modalVisible);
+    setModalVisibility(!modalVisibility);
   };
 
   return (
@@ -93,27 +89,26 @@ export default function Todo({ navigation }) {
       <View>
         <View style={styles.dateContainer}>
           <TouchableOpacity onPress={showDatePicker} style={styles.pickDate}>
-            <Icon name="calendar" style={styles.Icon}  ></Icon>
+            <Icon name="calendar" style={styles.Icon}></Icon>
           </TouchableOpacity>
           <Text style={styles.datePlaceHolder}> {date && date.toString()}</Text>
         </View>
         <DateTimePickerModal
-          isVisible={DatePickerVisible}
+          isVisible={DatePickerVisibility}
           mode="Date"
           onConfirm={handleConfirm}
           onCancel={hideDatePicker}
         />
         <View style={styles.dateContainer}>
-        
           <TouchableOpacity
             onPress={handleModalVisibilityChange}
             style={styles.Notes}
           >
-            <Icon name="filetext1" style={styles.Icon}  ></Icon>
+            <Icon name="filetext1" style={styles.Icon}></Icon>
           </TouchableOpacity>
           <View style={styles.modalContainer}>
             <Modal
-              visible={modalVisible}
+              visible={modalVisibility}
               animationType="fade"
               transparent={true}
               onRequestClose={handleModalVisibilityChange}

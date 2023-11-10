@@ -1,23 +1,21 @@
-
 import { Alert } from "react-native";
-
-// to be converted to functional component setOriginalNode.
+import { ItemPersistentStore } from "../Persistence/Persistence";
 export class ItemServices {
-    constructor(){}
-    
-    // item methods
- deleteItem(params) {
-    Alert.alert("Delete item", "comfirm to delete item", [
-         {
-          text: "Cancel",
-          onPress: () => console.log("Can't delete item"),
+  itemPersistentStore = new ItemPersistentStore();
+
+  deleteItem(id) {
+    Alert.alert("Delete item", `comfirm to delete item `, [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Can't delete item"),
+      },
+      {
+        text: "Delete",
+        onPress: () => {
+          this.itemPersistentStore.deleteTodo(id);
+          Alert.alert("Successful");
         },
-        {
-          text: "Delete",
-          onPress: () => {
-            Alert.alert('Successful')
-        }
-        },
-      ]);  
- }
+      },
+    ]);
+  }
 }

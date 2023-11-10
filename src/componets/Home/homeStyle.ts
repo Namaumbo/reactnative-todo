@@ -1,9 +1,9 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet  } from "react-native"
 
 const styles = StyleSheet.create({
 
     main:{
-marginTop:-10
+height:'100%'
     },
     addBtn: {
         borderWidth: 1,
@@ -19,8 +19,10 @@ marginTop:-10
         },
         btnCon:{
             alignSelf:'flex-end',
-            top:'190%',
-            marginRight:10
+            position: 'absolute',
+            bottom: '2%',
+            right:'2%'
+
         },
     addTxt: {
         color: 'white',
@@ -68,8 +70,8 @@ marginTop:-10
         alignItems: 'center',
     },
     ScrollView:{
-        marginTop:-60,
-        marginBottom:60
+        marginTop:5,
+        marginBottom:75
     }
 
 })
