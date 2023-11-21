@@ -47,14 +47,14 @@ export default function Home({ navigation }) {
     }
   }, [isFocused]);
 
-  // check = () => {
-  //   item
-  //     .getItems()
-  //     .then((items) => {
-  //       console.log(items["todos"]);
-  //     })
-  //     .catch((err) => {});
-  // };
+  check = () => {
+    item
+      .getItems()
+      .then((items) => {
+        console.log("=>",items["todos"]);
+      })
+      .catch((err) => {});
+  };
   
   return (
     <View style={styles.main}>
@@ -96,7 +96,7 @@ export default function Home({ navigation }) {
           })}
         </View>
       </ScrollView>
-      {/* <Button onPress={check} title="check"></Button> */}
+      <Button onPress={check} title="check"></Button>
       </View>
   );
 }
