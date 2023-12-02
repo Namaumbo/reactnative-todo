@@ -78,6 +78,26 @@ export class ItemPersistentStore {
     return res;
   };
 
+  unComplete = async (todoId) => {
+    res = {};
+    try {
+      console.log(todoId);
+      const todos = JSON.parse(await AsyncStorage.getItem("todos")) || [];
+      const updatedTodos = todos.map((todo) => {
+        if (todo.id === todoId) {
+          return { ...todo, completed: false };
+        }
+        return todo;
+      });
+      await AsyncStorage.setItem("todos", JSON.stringify(updatedTodos));
+      res["todos"] = updatedTodos;
+    } catch (error) {
+      console.error("Error updating to-do:", error);
+      res["todos"] = null;
+    }
+    return res;
+  };
+
   //---------------------------Delete a to-do item----------------------------
   deleteTodo = async (todoId) => {
     res = {};

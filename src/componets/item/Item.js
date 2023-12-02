@@ -18,7 +18,7 @@ export default function Item(props) {
       <View style={styles.Btns}>
         {props.itemDetails.completed ? (
           //true completion
-          <TouchableOpacity onPress={props.onUpdate}> 
+          <TouchableOpacity onPress={props.onUncompleted}> 
             <Icon name="reload1" style={styles.incompleteBtn} />
           </TouchableOpacity>
         ) : (

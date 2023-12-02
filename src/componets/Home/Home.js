@@ -40,8 +40,18 @@ export default function Home({ navigation }) {
     item
       .updateTodo(id)
       .then((res) => {
-        console.log("updated =>>",res['todos']);
-        setArr(res['todos'])
+        setArr(res["todos"]);
+      })
+      .catch((err) => {
+        Alert.alert(err);
+      });
+  };
+
+  const handleUncompleted = (id) => {
+    item
+      .unComplete(id)
+      .then((res) => {
+        setArr(res['todos']);
       })
       .catch((err) => {
         Alert.alert(err);
@@ -51,13 +61,13 @@ export default function Home({ navigation }) {
     item
       .getItems()
       .then((data) => {
-        
         setArr(data["todos"]);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   useEffect(() => {
     if (isFocused) {
       fetch();
@@ -109,8 +119,10 @@ export default function Home({ navigation }) {
                   item={x.title}
                   itemDetails={x}
                   // to be called by the component onPress
+                  //implement incomplete method
                   onDelete={() => handleDelete(x["id"])}
                   onUpdate={() => handleUpdate(x["id"])}
+                  onUncompleted={() => handleUncompleted(x["id"])}
                 />
               </View>
             );
